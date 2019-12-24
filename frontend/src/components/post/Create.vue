@@ -38,7 +38,7 @@ export default {
       title: "",
       description: "",
       body: "",
-      author: "",
+      author: "Olususi Oluyemi",
       date_posted: ""
     };
   },
@@ -57,10 +57,12 @@ export default {
       this.__submitToServer(postData);
     },
     __submitToServer(data) {
-      axios.post(`${server.baseURL}/blog/post`, data).then(
-        router.push({ name: "home" })
-      );
+      axios.post(`${server.baseURL}/blog/post`, data).then(data => {
+        console.log(data);
+        router.push({ name: "home" });
+      });
     }
   }
 };
 </script>
+
