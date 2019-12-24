@@ -1,37 +1,68 @@
-import { Injectable } from '@nestjs/common';
-import { JwtService } from  '@nestjs/jwt';
-import { UserService } from  './user.service';
-import { User } from  './user.entity';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { LoginUserDto } from '../user/dto/login-user.dto';
+import { UsersService } from '../user/users.service';
+import { JwtPayload } from './interfaces/jwt-payload.interface';
 
 @Injectable()
 export class AuthService {
-    constructor(
-        private readonly userService: UserService,
-        private readonly jwtService: JwtService
-    ) { }
-    private async validate(userData: User): Promise<User> {
-        return await this.userService.findByEmail(userData.email);
+
+    constructor(private usersService: UsersService, private jwtService: JwtService){
+
     }
 
-    public async login(user: User): Promise< any | { status: number }>{
-        return this.validate(user).then((userData)=>{
-          if(!userData){
-            return { status: 404 };
-          }
-          let payload = `${userData.name}${userData.id}`;
-          const accessToken = this.jwtService.sign(payload);
+    async validateUserByPassword(loginAttempt: LoginUserDto) {
 
-          return {
-             expires_in: 3600,
-             access_token: accessToken,
-             user_id: payload,
-             status: 200
-          };
+        // This will be used for the initial login
+        let userToAttempt = await this.usersService.findOneByEmail(loginAttempt.email);
+        
+        return new Promise((resolve) => {
+
+            // Check the supplied password against the hash stored for this email address
+            userToAttempt.checkPassword(loginAttempt.password, (err, isMatch) => {
+    
+                if(err) throw new UnauthorizedException();
+    
+                if(isMatch){
+                    // If there is a successful match, generate a JWT for the user
+                    resolve(this.createJwtPayload(userToAttempt));
+    
+                } else {
+                    throw new UnauthorizedException();
+                }
+    
+            });
 
         });
+
     }
 
-    public async register(user: User): Promise<any>{
-        return this.userService.create(user)
-    } 
+    async validateUserByJwt(payload: JwtPayload) { 
+
+        // This will be used when the user has already logged in and has a JWT
+        let user = await this.usersService.findOneByEmail(payload.email);
+
+        if(user){
+            return this.createJwtPayload(user);
+        } else {
+            throw new UnauthorizedException();
+        }
+
+    }
+
+    createJwtPayload(user){
+
+        let data: JwtPayload = {
+            email: user.email
+        };
+
+        let jwt = this.jwtService.sign(data);
+
+        return {
+            expiresIn: 3600,
+            token: jwt            
+        }
+
+    }
+
 }
