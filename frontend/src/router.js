@@ -6,6 +6,7 @@ import EditComponent from '@/components/post/Edit';
 import CreateComponent from '@/components/post/Create';
 import PostComponent from '@/components/post/Post';
 import UserRegister from '@/components/user/Register';
+import UserLogin from '@/components/user/Login';
 
 Vue.use(Router)
 
@@ -19,6 +20,7 @@ export default new Router({
     { path: '/create', name: 'Create', component: CreateComponent },
     { path: '/edit/:id', name: 'Edit', component: EditComponent },
     { path: '/post/:id', name: 'Post', component: PostComponent },
-    { path: '/register', name: 'Register', component: UserRegister }
+    { path: '/register', name: 'Register', component: UserRegister },
+    { path: '/login', name: 'Login', component: UserLogin }
   ]
 });
