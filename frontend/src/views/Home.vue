@@ -17,8 +17,7 @@
                    <h2 class="card-img-top">{{ post.title }}</h2>
                 </div>
                 <div class="card-body">
-                  <p class="card-text">{{ cutText(post.body, 150)}}</p>
-                                 
+                  <p class="card-text">{{ cutText(post.body, 150)}}</p>                                 
                 </div>
                   <div class="card-footer">
                     <div class="row align-items-center">
