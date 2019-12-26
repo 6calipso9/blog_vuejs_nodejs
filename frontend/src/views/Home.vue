@@ -2,8 +2,8 @@
     <div>
 
       <div class="text-center">
-        <h1>Nest Blog Tutorial</h1>
-       <p> This is the description of the blog built with Nest.js, Vue.js and MongoDB</p>
+        <h1>BSTU Blog</h1>
+       <p> This blog by student PV-41</p>
 
        <div v-if="posts.length === 0">
             <h2> No post found at the moment </h2>

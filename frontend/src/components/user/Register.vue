@@ -2,7 +2,7 @@
    <div>
      <div class="card mx-auto" style="width: 30rem;">
        <div class="card-header text-center">
-          <h2> Register account </h2>
+          <h2> Register </h2>
        </div>
        <div class="card-body">
         <div v-show="errorRepeatPass" class="alert alert-warning">
@@ -10,6 +10,9 @@
         </div>
         <div v-show="errorNameExist" class="alert alert-warning">
           Email exist, try 
+        </div>
+        <div v-show="errorNameExist" class="alert alert-danger">
+          Server error 
         </div>
          <form id="create-post-form" @submit.prevent="RegisterUser">
               <div class="form-group col-md-12">
@@ -43,7 +46,8 @@ export default {
       email: "",
       password: "",
       errorRepeatPass: false,
-      errorNameExist: false
+      errorNameExist: false,
+      errorServer: false,
     };    
   },
   
@@ -57,6 +61,7 @@ export default {
       }
       this.errorRepeatPass = false;
       this.errorNameExist = false;
+      this.errorServer = false;
         
       this.errors = [];
       let postData = {
@@ -70,6 +75,8 @@ export default {
         if(response.data.message == 'email exist')
           this.errorNameExist = true;
         console.log(response.data);
+      }).catch(() => {
+        this.errorServer = true;
       });
     }, 
   }
