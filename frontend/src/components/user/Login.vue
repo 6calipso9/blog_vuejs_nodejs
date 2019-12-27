@@ -39,7 +39,7 @@
 <script>
 //import axios from "axios";
 import { server } from "../../utils/helper";
-//import router from "../../router";
+import router from "../../router";
 export default {
   data() {
     return {
@@ -74,6 +74,7 @@ export default {
           localStorage.setItem('email', response.data.email)
           this.sucesslogin = true;
         console.log(localStorage.getItem('jwt'))
+        router.push('Profile')
         })
         .catch((error)=>{
           if(error.data.message.includes('Not authenticated'))

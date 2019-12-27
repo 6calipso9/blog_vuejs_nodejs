@@ -5,6 +5,7 @@ import VueResource from "vue-resource"
 
 Vue.config.productionTip = false
 Vue.use(VueResource);
+Vue.http.headers.common['Authorization'] = localStorage.getItem('jwt');
 new Vue({
   router,
   render: h => h(App)

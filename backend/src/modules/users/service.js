@@ -20,6 +20,7 @@ async function update(req, res) {
   }
 
   user.set(req.body.user);
+  user.updatedAt = Date.now();
   req.ability.throwUnlessCan('update', user);
   await user.save();
 
