@@ -13,7 +13,7 @@ async function find(req, res) {
     throw new NotFound('Post not found');
   }
 
-  req.ability.throwUnlessCan('update', post);
+  req.ability.throwUnlessCan('read', post);
   res.send({ post });
 }
 

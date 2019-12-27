@@ -20,7 +20,7 @@ export default new Router({
     { path: '/about', name: 'about', component: AboutComponent },
     { path: '/create', name: 'Create', component: CreateComponent },
     { path: '/edit/:id', name: 'Edit', component: EditComponent },
-    { path: '/post/:id', name: 'Post', component: PostComponent },
+    { path: '/posts/:id', name: 'Posts', component: PostComponent },
     { path: '/register', name: 'Register', component: UserRegister },
     { path: '/login', name: 'Login', component: UserLogin },
     { path: '/profile', name: 'Profile', component: ProfilePage }

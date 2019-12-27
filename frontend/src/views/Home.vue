@@ -17,20 +17,18 @@
                    <h2 class="card-img-top">{{ post.title }}</h2>
                 </div>
                 <div class="card-body">
-                  <p class="card-text">{{ cutText(post.body, 150)}}</p>                                 
+                  <p class="card-text">{{ cutText(post.text, 150)}}</p>                                 
                 </div>
                   <div class="card-footer">
                     <div class="row align-items-center">
                       <div class="col-md-6">
-                        <small class="text-muted">Posted on: {{ post.date_posted}}</small><br/>
+                        <small class="text-muted">Posted on: {{ post.createdAt}}</small><br/>
                         <small class="text-muted">by: {{ post.author}}</small>
                       </div>
                       <div class="col-md-6">
                         <div class="d-flex justify-content-between align-items-center">
                           <div class="btn-group">
-                            <router-link :to="{name: 'Post', params: {id: post._id}}" class="btn btn-sm btn-primary ">View Post </router-link>
-                            <router-link :to="{name: 'Edit', params: {id: post._id}}" class="btn btn-sm btn-warning">Edit Post </router-link>
-                            <button class="btn btn-sm btn-danger" v-on:click="deletePost(post._id)">Delete Post</button>
+                            <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">View Post</router-link>
                           </div>
                         </div>  
                       </div>
@@ -45,7 +43,6 @@
 <script>
 // @ is an alias to /src
 import { server } from "@/utils/helper";
-import axios from "axios";
 
 export default {
   data() {
@@ -58,21 +55,18 @@ export default {
   },
   methods: {
     fetchPosts() {
-      axios
-        .get(`${server.baseURL}/blog/posts`)
-        .then(data => (this.posts = data.data));
+      this.$http.get(`${server.baseURL}/posts`, "", {
+            headers:{
+                'Authorization': `${localStorage.getItem('jwt')}`
+            }
+        })
+        .then(data => (this.posts = data.data.posts));
     },
     cutText(value, symbolsCount) {
       return value.length > symbolsCount
         ? value.slice(0, symbolsCount - 3) + '...'
         : value
     },
-    deletePost(id) {
-      axios.delete(`${server.baseURL}/blog/delete?postID=${id}`).then(data => {
-        console.log(data);
-        window.location.reload();
-      });
-    }
   }
 };
 </script>

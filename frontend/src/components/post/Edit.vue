@@ -67,7 +67,7 @@ export default {
     },
     getPost() {
       axios
-        .get(`${server.baseURL}/blog/post/${this.id}`)
+        .get(`${server.baseURL}/posts/${this.id}`)
         .then(data => (this.post = data.data));
     },
     navigate() {
