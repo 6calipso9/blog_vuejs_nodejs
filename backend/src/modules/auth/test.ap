@@ -1,9 +1,21 @@
 curl -d "email=boss@asd.xc&password=1234asdas56" -X POST http://localhost:3030/users
 
-curl -d '{"user":{"email":"value2", "password":"vale3"}}' -H "Content-Type: application/json" -X POST http://localhost:3030/users
+curl -d '{"user":{"email":"123321", "password":"123"}}' -H "Content-Type: application/json" -X POST http://localhost:3030/users
 
-curl -d '{"session":{"email":"value2", "password":"vale3"}}' -H "Content-Type: application/json" -X POST http://localhost:3030/session
+curl -d '{"session":{"email":"123321", "password":"123"}}' -H "Content-Type: application/json" -X POST http://localhost:3030/session
 
 
-curl -d '{"user":{"email":"value2"}}' -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDYwYTcwNzlkMzc5MWNjNzZjZmZjNiIsImlhdCI6MTU3NzQ1NDMyMiwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.xttxqaDTyL5liX8ukgYrLAFy774fA0o7wdA4iqR8aYo" -X POST http://localhost:3030/users
+curl -d '{"user":{"email":"123123"}}' -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDY0MTI3ZTI2NWYwMjAwZjljZGQ1MiIsImlhdCI6MTU3NzQ3MTkyOCwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.d2YZen1wA-G_TyqfV2eNzBb35OSYhfJWM402KB47DU4" -X GET http://localhost:3030/users
+
+curl -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDY0MTI3ZTI2NWYwMjAwZjljZGQ1MiIsImlhdCI6MTU3NzQ3MTkyOCwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.d2YZen1wA-G_TyqfV2eNzBb35OSYhfJWM402KB47DU4" http://localhost:3030/users/5e064127e265f0200f9cdd52
+
+
+curl -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDY1MWY0YWI1ODBiMmQ1NTdiZGRmYSIsImlhdCI6MTU3NzQ3MjUwNywiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.5CYsGzBe1SVTmOW1mvJjIz1SlrogTSvTdvPbbgf0eZU" http://localhost:3030/users/5e064127e265f0200f9cdd52
+
+
+curl -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDY0MTI3ZTI2NWYwMjAwZjljZGQ1MiIsImlhdCI6MTU3NzQ3NTA5NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.8Ins1RmVqPJ7dLTql_OSBfwfAF8kDokhx7t-UakPEuU" http://localhost:3030/users/5e064127e265f0200f9cdd52
+
+
+
+curl -d '{"post":{"title":"123321", "text":"123"}}' -H "Content-Type: application/json" -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDY2OWQzMzk2YmUwNDAxYTM3YzRjOSIsImlhdCI6MTU3NzQ4NTAyOSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.e7hiyXIUz2Utp-v3R2oFQYCXkAs0jMu9IoqERaDqrD8" -X POST http://localhost:3030/posts
 

@@ -22,7 +22,9 @@ async function create(req, res) {
     ...req.body.post,
     author: req.user._id
   });
-
+  console.log(req.user._id)
+  console.log(post);
+  console.log(post.author)
   req.ability.throwUnlessCan('create', post);
   await post.save();
   res.send({ post });
