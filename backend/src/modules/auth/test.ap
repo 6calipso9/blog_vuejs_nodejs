@@ -1,0 +1,9 @@
+curl -d "email=boss@asd.xc&password=1234asdas56" -X POST http://localhost:3030/users
+
+curl -d '{"user":{"email":"value2", "password":"vale3"}}' -H "Content-Type: application/json" -X POST http://localhost:3030/users
+
+curl -d '{"session":{"email":"value2", "password":"vale3"}}' -H "Content-Type: application/json" -X POST http://localhost:3030/session
+
+
+curl -d '{"user":{"email":"value2"}}' -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlMDYwYTcwNzlkMzc5MWNjNzZjZmZjNiIsImlhdCI6MTU3NzQ1NDMyMiwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.xttxqaDTyL5liX8ukgYrLAFy774fA0o7wdA4iqR8aYo" -X POST http://localhost:3030/users
+
