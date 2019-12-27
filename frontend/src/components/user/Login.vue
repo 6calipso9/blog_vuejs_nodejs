@@ -75,6 +75,7 @@ export default {
           this.sucesslogin = true;
         console.log(localStorage.getItem('jwt'))
         router.push('Profile')
+        location.reload()
         })
         .catch((error)=>{
           if(error.data.message.includes('Not authenticated'))
