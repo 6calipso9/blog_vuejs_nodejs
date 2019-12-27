@@ -77,7 +77,7 @@ export default {
     },
     __submitToServer(data) {
         this.$http.post(`${server.baseURL}/users`, data)
-      .then((response) => {
+        .then((response) => {
         this.sucessRegistr = true
         console.log(response.data)
         })

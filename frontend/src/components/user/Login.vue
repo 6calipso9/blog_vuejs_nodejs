@@ -14,6 +14,9 @@
         <div v-show="errorServer" class="alert alert-danger">
           Server error
         </div>
+        <div v-show="sucesslogin" class="alert alert-success">
+          Sucess login
+        </div>
 
         <form id="create-post-form" @submit.prevent="LoginUser">
                 <div class="form-group col-md-12">
@@ -34,16 +37,17 @@
 </template>
 
 <script>
-import axios from "axios";
+//import axios from "axios";
 import { server } from "../../utils/helper";
-import router from "../../router";
+//import router from "../../router";
 export default {
   data() {
     return {
       email: "",
       password: "",
       errorServer: false,
-      errorNameOrPass: false
+      errorNameOrPass: false,
+      sucesslogin: false
     };
   },
   created() {
@@ -56,15 +60,28 @@ export default {
         password: this.password,
       };
       this.errorNameOrPass = false;
-      this.__submitToServer(postData);
+      this.errorServer = false;
+      this.sucesslogin = false;
+
+      let session = {session: postData};
+      this.__submitToServer(session);
     },
     __submitToServer(data) {
-      axios.post(`${server.baseURL}/auth`, data).then(data => {
-        console.log(data + data.status);
-        router.push({ name: "home" });
-      }).catch(() => {
-        this.errorNameOrPass = true;
-      });
+      this.$http.post(`${server.baseURL}/session`, data)
+        .then((response) => {
+          localStorage.setItem('jwt', response.data.access)
+          localStorage.setItem('id', response.data.id)
+          localStorage.setItem('email', response.data.email)
+          this.sucesslogin = true;
+        console.log(localStorage.getItem('jwt'))
+        })
+        .catch((error)=>{
+          if(error.data.message.includes('Not authenticated'))
+            this.errorNameOrPass = true;
+          else  
+           this.errorServer = true;
+          console.log(error);
+        })
     }
   }
 };

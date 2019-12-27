@@ -20,7 +20,7 @@ async function create(req, res) {
     audience: req.app.get('jwt.audience')
   });
 
-  res.send({ acess: accessToken, id: user.id, email: user.email });
+  res.send({ access: accessToken, id: user.id, email: user.email });
 }
 
 module.exports = { create };
