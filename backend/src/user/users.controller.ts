@@ -12,7 +12,7 @@ export class UsersController {
 
     @Post() 
     async create(@Body() createUserDto: CreateUserDto) {
-        return await this.usersService.create(createUserDto);
+            return await this.usersService.create(createUserDto);   
     }
 
     // This route will require successfully passing our default auth strategy (JWT) in order
