@@ -11,8 +11,11 @@
         <div v-show="errorNameExist" class="alert alert-warning">
           Email exist, try 
         </div>
-        <div v-show="errorNameExist" class="alert alert-danger">
+        <div v-show="errorServer" class="alert alert-danger">
           Server error 
+        </div>
+        <div v-show="sucessRegistr" class="alert alert-success">
+          Sucess registration
         </div>
          <form id="create-post-form" @submit.prevent="RegisterUser">
               <div class="form-group col-md-12">
@@ -37,7 +40,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import { server } from "../../utils/helper";
 //import router from "../../router";
 export default {
@@ -48,6 +50,7 @@ export default {
       errorRepeatPass: false,
       errorNameExist: false,
       errorServer: false,
+      sucessRegistr: false
     };    
   },
   
@@ -62,22 +65,29 @@ export default {
       this.errorRepeatPass = false;
       this.errorNameExist = false;
       this.errorServer = false;
+      this.sucessRegistr = false;
         
       this.errors = [];
       let postData = {
         email: this.email,
         password: this.password,
       };
-      this.__submitToServer(postData);
+      let user = {user: postData};
+      this.__submitToServer(user);
     },
     __submitToServer(data) {
-      axios.post(`${server.baseURL}/users`, data).then((response) => {
-        if(response.data.message == 'email exist')
-          this.errorNameExist = true;
-        console.log(response.data);
-      }).catch(() => {
-        this.errorServer = true;
-      });
+        this.$http.post(`${server.baseURL}/users`, data)
+      .then((response) => {
+        this.sucessRegistr = true
+        console.log(response.data)
+        })
+        .catch((error)=>{
+          if(error.data.message.includes('E11000'))
+            this.errorNameExist = true;
+          else  
+           this.errorServer = true;
+          console.log(error);
+        })
     }, 
   }
 };
