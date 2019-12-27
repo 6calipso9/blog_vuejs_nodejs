@@ -1,4 +1,30 @@
+body {
+    margin: 0px auto;
+    width: 80%;
+    min-width: 320px;
+}
+
 .form-wrapper {
     width: 500px;
     margin: 0 auto;
+}
+
+.main_style_1 {
+    margin: 0px auto;
+    display: flex;
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.main_style_2 {
+    min-width: 320px;
+
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    align-content: center;
+    text-align: center;
+
+    border: 1px solid green;
 }
