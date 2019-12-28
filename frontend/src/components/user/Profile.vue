@@ -50,11 +50,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    <tr v-for="post in posts" :key="post._id">
+      <th>{{post._id}}</th>
+      <td>{{post.title}} </td>
+      <td>*</td>
+      <td><div class="btn-group" >
+            <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">View</router-link>
+            <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">Edit</router-link>
+            <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">Delete</router-link>
+          </div></td>
     </tr>    
   </tbody>
 </table>
@@ -75,13 +79,23 @@ export default {
     return {
       email: "",
       password: "",
-      sucessSave: false
+      sucessSave: false,
+      posts: []
     };
   },
   created() {
     this.fetchInfo();
+    this.fetchPosts();
   },
   methods: {
+    fetchPosts() {
+      this.$http.get(`${server.baseURL}/myposts`, "", {
+            headers:{
+                'Authorization': `${localStorage.getItem('jwt')}`
+            }
+        })
+        .then(data => (this.posts = data.data.posts));
+    },
       fetchInfo(){
         this.$http.get(`${server.baseURL}/users/${localStorage.getItem('id')}`, "", {
             headers:{
