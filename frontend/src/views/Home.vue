@@ -11,7 +11,7 @@
         </div>
       </div>
        
-      <div class="row" style="order: 2">
+      <div class="sp_row" style="order: 2">
         <div class="col-md-4" v-for="post in posts" :key="post._id">
           <div class="card mb-4 shadow-sm sp_card">
             <div class="card-header" style="width: 100%; order: 1">
@@ -22,11 +22,11 @@
             </div>
             <div class="card-footer" style="width: 100%; order: 3">
               <div class="row align-items-center">
-                <div class="col-md-6">
-                  <small class="text-muted">Posted on: {{ post.createdAt}}</small><br/>
-                  <small class="text-muted">by: {{ post.author}}</small>
+                <div class="col-md-8">
+                  <small class="text-muted">Posted on: {{post.createdAt}}</small><br/>
+                  <small class="text-muted">by: {{post.author}}</small>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">View Post</router-link>

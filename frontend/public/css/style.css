@@ -23,8 +23,14 @@ body {
     flex-flow: column wrap;
     align-items: center;
     align-content: center;
+}
 
-    border: 1px solid black;
+.sp_row {
+    display: flex;
+    width: 100%;
+
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 .sp_card {
@@ -35,10 +41,6 @@ body {
     align-items: center;
     align-content: center;
 }
-
-/* .sp_card_footer{
-    display: flex;
-} */
 
 .main_style_2 {
     min-width: 320px;
