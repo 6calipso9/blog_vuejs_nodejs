@@ -40,7 +40,7 @@
      
       <div class="card-body ">
         <div v-show="sucessDel" class="alert alert-success">
-          Sucess login
+          Sucess delete
         </div>
         <div id="create-post-form" @submit.prevent="SaveUser">
                    <table class="table">

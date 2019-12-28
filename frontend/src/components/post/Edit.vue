@@ -1,19 +1,18 @@
 <template>
 <div>
-      <h4 class="text-center mt-20">
-       <small>
-         <button class="btn btn-success" v-on:click="navigate()"> View All Posts </button>
-       </small>
-    </h4>
-        <div class="col-md-12 form-wrapper">
-          <h2> Edit Post </h2>
-          <div v-show="sucessEdit" class="alert alert-success">
+  <form id="edit-post-form" @submit.prevent="editPost">
+  <div class="card mx-auto" style="width: 30rem;">
+    <div class="card-header text-center">
+      <h2> Edit Post </h2>
+    </div>
+    <div class="card-body">
+      <div v-show="sucessEdit" class="alert alert-success">
               <div class="btn-group">
                 <router-link :to="{name: 'Posts', params: {id: id}}" class="btn btn-sm btn-primary ">View Post</router-link>
               </div>
                 Post edited!
               </div>
-          <form id="edit-post-form" @submit.prevent="editPost">
+          
             <div class="form-group col-md-12">
                 <label for="title"> Title </label>
                 <input type="text" id="title" v-model="post.title" name="title" class="form-control" placeholder="Enter title">
@@ -22,11 +21,18 @@
                 <label for="text"> Write Content </label>
                 <textarea id="text" cols="30" rows="5" v-model="post.text" class="form-control"></textarea>
             </div>
-            <div class="form-group col-md-4 pull-right">
-                <button class="btn btn-success" type="submit"> Edit Post </button>
-            </div>
-          </form>
-        </div>
+            
+          
+    </div>
+    <div class="card-footer">
+                <div class="form-group col-md-12 pull-right">
+                    <button class="btn btn-success col-md-12" type="submit"> Create Post </button>
+                </div>    
+                </div>
+                
+  </div>
+  </form>
+
     </div>
 </template>
 
