@@ -48,7 +48,6 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Title</th>
-      <th scope="col">C.C.</th>
       <th scope="col">Use</th>
     </tr>
   </thead>
@@ -56,7 +55,6 @@
     <tr v-for="post in posts" :key="post._id">
       <th>{{post._id}}</th>
       <td>{{post.title}} </td>
-      <td>*</td>
       <td><div class="btn-group" >
             <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">View</router-link>
             <router-link :to="{name: 'Edit', params: {id: post._id}}" class="btn btn-sm btn-warning">Edit Post </router-link>
@@ -84,7 +82,8 @@ export default {
       password: "",
       sucessSave: false,
       posts: [],
-      sucessDel: false
+      sucessDel: false,
+      commentsCount: []
     };
   },
   created() {
@@ -109,12 +108,13 @@ export default {
           );
     },
     fetchPosts() {
+      
       this.$http.get(`${server.baseURL}/myposts`, "", {
             headers:{
                 'Authorization': `${localStorage.getItem('jwt')}`
             }
         })
-        .then(data => (this.posts = data.data.posts));
+        .then(data => (this.posts = data.data.posts, this.posts.post.cc = ''));
     },
       fetchInfo(){
         this.$http.get(`${server.baseURL}/users/${localStorage.getItem('id')}`, "", {
