@@ -39,6 +39,9 @@
        </div>
      
       <div class="card-body ">
+        <div v-show="sucessDel" class="alert alert-success">
+          Sucess login
+        </div>
         <div id="create-post-form" @submit.prevent="SaveUser">
                    <table class="table">
   <thead>
@@ -50,11 +53,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    <tr v-for="post in posts" :key="post._id">
+      <th>{{post._id}}</th>
+      <td>{{post.title}} </td>
+      <td>*</td>
+      <td><div class="btn-group" >
+            <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">View</router-link>
+            <router-link :to="{name: 'Edit', params: {id: post._id}}" class="btn btn-sm btn-warning">Edit Post </router-link>
+            <button class="btn btn-sm btn-danger" v-on:click="deletePost(post._id)">Delete Post</button>
+          </div></td>
     </tr>    
   </tbody>
 </table>
@@ -75,13 +82,40 @@ export default {
     return {
       email: "",
       password: "",
-      sucessSave: false
+      sucessSave: false,
+      posts: [],
+      sucessDel: false
     };
   },
   created() {
     this.fetchInfo();
+    this.fetchPosts();
   },
   methods: {
+    deletePost(id){
+      this.sucessDel = false;
+      this.$http.delete(`${server.baseURL}/posts/${id}`, "", {
+            headers:{
+                'Authorization': `${localStorage.getItem('jwt')}`
+            }
+        })
+        .then(
+          this.sucessDel = true, 
+          
+          this.posts = this.posts.filter(function( obj ) {
+            return obj._id !== id;
+          }),
+  
+          );
+    },
+    fetchPosts() {
+      this.$http.get(`${server.baseURL}/myposts`, "", {
+            headers:{
+                'Authorization': `${localStorage.getItem('jwt')}`
+            }
+        })
+        .then(data => (this.posts = data.data.posts));
+    },
       fetchInfo(){
         this.$http.get(`${server.baseURL}/users/${localStorage.getItem('id')}`, "", {
             headers:{
