@@ -29,7 +29,7 @@
       </div>
        <div class="card-footer">
                 <div class="form-group col-md-12 pull-right">
-                    <button class="btn btn-success col-md-12" type="submit"> Save </button>
+                    <button class="btn btn-success col-md-12" v-on:click="SaveUser" type="submit"> Save </button>
                 </div>    
                 </div>
      </div>
