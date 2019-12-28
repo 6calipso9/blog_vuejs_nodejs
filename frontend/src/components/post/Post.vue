@@ -16,7 +16,7 @@
               </div>
       </div>
       <div class="card-body">
-        <textarea class="form-control" v-model="mycomment" placeholder="write a comment..." rows="3"></textarea>
+        <textarea class="form-control" v-model="mycomment" placeholder="write a comment..." rows="3" ></textarea>
       </div>
       <div class="card-footer">
         <button class="btn btn-success col-md-12" v-on:click="sendComment" type="submit"> Commit </button>

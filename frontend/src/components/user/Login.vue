@@ -21,11 +21,11 @@
         <form id="create-post-form" @submit.prevent="LoginUser">
                 <div class="form-group col-md-12">
                     <label for="email"> Email </label>
-                    <input type="text" id="email" v-model="email" name="email" class="form-control">
+                    <input type="text" id="email" v-model="email" name="email" class="form-control" required="required" pattern="[A-Za-z0-9]{1,20}">
                 </div>    
                 <div class="form-group col-md-12">
                     <label for="password"> Password </label>
-                    <input type="password" id="password" v-model="password" name="password" class="form-control">
+                    <input type="password" id="password" v-model="password" name="password" class="form-control" required="required" pattern="[A-Za-z0-9]{1,20}">
                 </div> 
                 <div class="form-group col-md-4 pull-right">
                     <button class="btn btn-success" type="submit"> Login </button>

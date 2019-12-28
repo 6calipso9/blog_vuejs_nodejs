@@ -17,11 +17,11 @@
                 
                 <div class="form-group col-md-12">
                   <label for="title"> Title </label>
-                  <input type="text" id="title" v-model="title" name="title" class="form-control" placeholder="Enter title">
+                  <input type="text" id="title" v-model="title" name="title" class="form-control" placeholder="Enter title" required="required" pattern="[A-Za-z0-9]{1,20}">
                 </div>
                 <div class="form-group col-md-12">
                     <label for="body"> Write Content </label>
-                    <textarea id="text" cols="30" rows="5" v-model="text" class="form-control"></textarea>
+                    <textarea id="text" cols="30" rows="5" v-model="text" class="form-control" required="required" pattern="[A-Za-z0-9]{1,20}"></textarea>
                 </div>        
             
             </div>
