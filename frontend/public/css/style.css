@@ -30,7 +30,6 @@ body {
 .sp_card {
     display: flex;
     min-width: 320px;
-    width: 30%;
 
     flex-flow: column wrap;
     align-items: center;
@@ -40,3 +39,14 @@ body {
 /* .sp_card_footer{
     display: flex;
 } */
+
+.main_style_2 {
+    min-width: 320px;
+
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    align-content: center;
+    text-align: center;
+
+    border: 1px solid green;
+}
