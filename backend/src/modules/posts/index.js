@@ -3,6 +3,7 @@ const posts = require('./service');
 module.exports = {
   configure(app) {
     app.get('/posts', posts.findAll);
+    app.get('/myposts', posts.findMyAll);
     app.post('/posts', posts.create);
 
     app.get('/posts/:id', posts.find);

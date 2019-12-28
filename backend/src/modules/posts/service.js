@@ -6,6 +6,13 @@ async function findAll(req, res) {
   res.send({ posts });
 }
 
+async function findMyAll(req, res) {
+  console.log(req.user._id)
+  const posts = await Post.accessibleBy(req.ability).find({author: req.user._id});
+
+  res.send({ posts });
+}
+
 async function find(req, res) {
   const post = await Post.findById(req.params.id);
 
@@ -60,5 +67,6 @@ module.exports = {
   update,
   destroy,
   find,
-  findAll
+  findAll,
+  findMyAll
 };
