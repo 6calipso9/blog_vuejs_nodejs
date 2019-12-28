@@ -33,7 +33,7 @@ export default {
         .then(data => {(this.post = data.data.post)});
     },
     navigate() {
-      router.go(-1);
+      router.push('/home');
     }
   }
 };

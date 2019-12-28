@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/home">Home</router-link> 
-      <router-link to="/create"> | Create</router-link>  
+      <router-link v-if="authed" to="/create"> | Create</router-link>  
       <router-link v-if="!authed" to="/register"> | Register</router-link>  
       <router-link v-if="!authed" to="/login"> | Login</router-link>
       <router-link v-if="authed" to="/profile"> | Profile</router-link>
