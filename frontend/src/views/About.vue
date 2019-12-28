@@ -1,5 +1,6 @@
 <template>
   <div class="about main_style_1" style="width: 80%">
+    <!--
     <div style="padding: 20px 0">
       <h1 style="width: 100%">Используемые технологии</h1>
       <dl>
@@ -14,18 +15,19 @@
           интерфейсный уровень и логику любого веб-приложения независимо от его размера. Простота интеграции
           его с другими библиотеками или существующими проектами делает его идеальным выбором для
           большинства современных веб-приложений.</dd> 
+        <dt></dt>
+        <dd></dd>
       </dl>
     </div>
+    -->
     <h1 style="width: 100%">О нас</h1>
-    <div class="main_style_2" style="order: 2">
-      <!-- <img src="" width=300px style="border-radius: 25px"> -->
+    <div class="main_style_2" style="width: 49%; padding: 25px; order: 2">
+      <img :src="require(`../assets/rus.png`)" width=200px style="border: 1px solid black; border-radius: 25px"><br><br>
       <p>email: <a href="">email_1</a></p>
-      <p style="margin: 0px">mobile number: ... </p>
     </div>
-    <div class="main_style_2" style="order: 3">
-      <!-- <img src="" width=300px style="border-radius: 25px"> -->
-      <p>email: <a href="">email_2</a></p>
-      <p style="margin: 0px">mobile number: ... </p>
+    <div class="main_style_2" style=" width: 49%; padding: 25px; order: 2; order: 3">
+      <img :src="require(`../assets/jn.png`)" width=200px style="border: 1px solid black; border-radius: 25px"><br><br>
+      <p>email: <a href="">email_1</a></p>
     </div>
   </div>
 </template>
