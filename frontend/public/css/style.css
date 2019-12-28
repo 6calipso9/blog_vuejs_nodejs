@@ -42,6 +42,11 @@ body {
     align-content: center;
 }
 
+.sp_card_footer {
+    display: flex;
+    flex-flow: row-reverse wrap;
+}
+
 .main_style_2 {
     min-width: 320px;
 

@@ -21,13 +21,13 @@
               <p class="card-text">{{ cutText(post.text, 150)}}</p>                                 
             </div>
             <div class="card-footer" style="width: 100%; order: 3">
-              <div class="row align-items-center">
-                <div class="col-md-8">
+              <div class="row align-items-center sp_card_footer">
+                <div style="widht: 80%; order: 2">
                   <small class="text-muted">Posted on: {{post.createdAt}}</small><br/>
                   <small class="text-muted">by: {{post.author}}</small>
                 </div>
-                <div class="col-md-4">
-                  <div class="d-flex justify-content-between align-items-center">
+                <div style="flex-grow: 1; order: 1">
+                  <div class="d-flex justify-content-center align-items-center">
                     <div class="btn-group">
                       <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">View Post</router-link>
                     </div>
