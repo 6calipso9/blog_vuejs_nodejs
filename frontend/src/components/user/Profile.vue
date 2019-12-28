@@ -39,6 +39,9 @@
        </div>
      
       <div class="card-body ">
+        <div v-show="sucessDel" class="alert alert-success">
+          Sucess login
+        </div>
         <div id="create-post-form" @submit.prevent="SaveUser">
                    <table class="table">
   <thead>
@@ -56,8 +59,8 @@
       <td>*</td>
       <td><div class="btn-group" >
             <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">View</router-link>
-            <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">Edit</router-link>
-            <router-link :to="{name: 'Posts', params: {id: post._id}}" class="btn btn-sm btn-primary ">Delete</router-link>
+            <router-link :to="{name: 'Edit', params: {id: post._id}}" class="btn btn-sm btn-warning">Edit Post </router-link>
+            <button class="btn btn-sm btn-danger" v-on:click="deletePost(post._id)">Delete Post</button>
           </div></td>
     </tr>    
   </tbody>
@@ -80,7 +83,8 @@ export default {
       email: "",
       password: "",
       sucessSave: false,
-      posts: []
+      posts: [],
+      sucessDel: false
     };
   },
   created() {
@@ -88,6 +92,22 @@ export default {
     this.fetchPosts();
   },
   methods: {
+    deletePost(id){
+      this.sucessDel = false;
+      this.$http.delete(`${server.baseURL}/posts/${id}`, "", {
+            headers:{
+                'Authorization': `${localStorage.getItem('jwt')}`
+            }
+        })
+        .then(
+          this.sucessDel = true, 
+          
+          this.posts = this.posts.filter(function( obj ) {
+            return obj._id !== id;
+          }),
+  
+          );
+    },
     fetchPosts() {
       this.$http.get(`${server.baseURL}/myposts`, "", {
             headers:{
