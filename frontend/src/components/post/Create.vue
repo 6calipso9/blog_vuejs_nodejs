@@ -1,27 +1,38 @@
 <template>
    <div>
         <div class="col-md-12 form-wrapper">
-          <h2> Create Post </h2>
           <form id="create-post-form" @submit.prevent="createPost">
-              <div v-show="sucessAdd" class="alert alert-success">
-              <div class="btn-group">
-                <router-link :to="{name: 'Posts', params: {id: id}}" class="btn btn-sm btn-primary ">View Post</router-link>
-              </div>
-                Post added!
-              </div>
+          <div class="card mx-auto" style="width: 30rem;">
+            <div class="card-header text-center">
+                <h2> Create post </h2>
+            </div>
+            <div class="card-body">
               
-               <div class="form-group col-md-12">
-                <label for="title"> Title </label>
-                <input type="text" id="title" v-model="title" name="title" class="form-control" placeholder="Enter title">
-               </div>
-              <div class="form-group col-md-12">
-                  <label for="body"> Write Content </label>
-                  <textarea id="text" cols="30" rows="5" v-model="text" class="form-control"></textarea>
-              </div>
-              <div class="form-group col-md-4 pull-right">
-                  <button class="btn btn-success" type="submit"> Create Post </button>
-              </div>          
+                <div v-show="sucessAdd" class="alert alert-success">
+                <div class="btn-group">
+                  <router-link :to="{name: 'Posts', params: {id: id}}" class="btn btn-sm btn-primary ">View Post</router-link>
+                </div>
+                  Post added!
+                </div>
+                
+                <div class="form-group col-md-12">
+                  <label for="title"> Title </label>
+                  <input type="text" id="title" v-model="title" name="title" class="form-control" placeholder="Enter title">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="body"> Write Content </label>
+                    <textarea id="text" cols="30" rows="5" v-model="text" class="form-control"></textarea>
+                </div>        
+            
+            </div>
+            <div class="card-footer">
+                <div class="form-group col-md-12 pull-right">
+                    <button class="btn btn-success col-md-12" type="submit"> Create Post </button>
+                </div>    
+                </div>
+          </div>
           </form>
+          
         </div>
     </div>
 </template>
