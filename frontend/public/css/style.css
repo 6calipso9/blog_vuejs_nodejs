@@ -13,18 +13,30 @@ body {
     margin: 0px auto;
     display: flex;
     
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-flow: row wrap;
 }
 
-.main_style_2 {
-    min-width: 320px;
+.home_title {
+    display: flex;
+    width: 100%;
 
-    flex-wrap: nowrap;
-    flex-grow: 1;
+    flex-flow: column wrap;
+    align-items: center;
     align-content: center;
-    text-align: center;
 
-    border: 1px solid green;
+    border: 1px solid black;
 }
+
+.sp_card {
+    display: flex;
+    min-width: 320px;
+    width: 30%;
+
+    flex-flow: column wrap;
+    align-items: center;
+    align-content: center;
+}
+
+/* .sp_card_footer{
+    display: flex;
+} */
