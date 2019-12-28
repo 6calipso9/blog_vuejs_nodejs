@@ -2,7 +2,7 @@ const { NotFound } = require('http-errors');
 const Comment = require('./model')();
 
 async function findAll(req, res) {
-  const comments = await Comment.accessibleBy(req.ability);
+  const comments = await Comment.accessibleBy(req.ability).find({post: req.params.postId});
 
   res.send({ comments });
 }

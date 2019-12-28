@@ -69,7 +69,6 @@ export default {
         console.log(data);
         this.sucessAdd = true
         this.id = data.data.post._id
-        
       });
     }
   }
