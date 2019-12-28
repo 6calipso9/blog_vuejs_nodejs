@@ -20,7 +20,7 @@
       </dl>
     </div>
     -->
-    <h1 style="width: 100%">О нас</h1>
+    <h1 style="width: 100%; text-align: center">О нас</h1>
     <div class="main_style_2" style="width: 49%; padding: 25px; order: 2">
       <img :src="require(`../assets/rus.png`)" width=200px style="border: 1px solid black; border-radius: 25px"><br><br>
       <p>email: <a href="">email_1</a></p>
