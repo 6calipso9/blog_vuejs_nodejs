@@ -6,11 +6,11 @@ module.exports = function () {
   const Post = new Schema({
     author: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     title: { type: String, required: true },
-    typePost: { type: String, required: true },
-    status: { type: String, required: true },
+    typePost: { type: String },
+    status: { type: String },
     text: { type: String, required: true },
     image: { type: String },
-    tags: [{ type: String }],
+    language: { type: String },
   }, {
     timestamps: true
   });
