@@ -6,9 +6,21 @@ async function findAll(req, res) {
   res.send({ posts });
 }
 
+async function findList(req, res) {
+  const posts = await Post.accessibleBy(req.ability);
+  var countLists = Math.ceil(posts.length / 9);
+  var countList = []
+  for (i = 0; i <= countLists - 1; i++) {
+    countList.push({ id: i });
+  }
+  var nowList = req.params.num;
+  const postsl = posts.slice(req.params.num * 9, req.params.num * 9 + 9)
+  res.send({ countList, nowList, posts: postsl });
+}
+
 async function findMyAll(req, res) {
   console.log(req.user._id)
-  const posts = await Post.accessibleBy(req.ability).find({author: req.user._id});
+  const posts = await Post.accessibleBy(req.ability).find({ author: req.user._id });
 
   res.send({ posts });
 }
@@ -30,8 +42,8 @@ async function create(req, res) {
     author: req.user._id
   });
   console.log(req.user._id)
-  console.log(post);
-  console.log(post.author)
+  //console.log(post);
+  //console.log(post.author)
   req.ability.throwUnlessCan('create', post);
   await post.save();
   res.send({ post });
@@ -68,5 +80,6 @@ module.exports = {
   destroy,
   find,
   findAll,
-  findMyAll
+  findMyAll,
+  findList
 };
