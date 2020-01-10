@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="sp_row" style id="postsHome">
+    <div v-show="visib" class="sp_row" style id="postsHome">
       <div class="col-md-4" id="postik" v-for="post in posts" :key="post._id">
         <div class="card mb-4 shadow-sm sp_card">
           <div class="card-header" style="width: 100%;">
@@ -61,7 +61,8 @@ export default {
     return {
       posts: [],
       pageNumber: 0,
-      countPage: []
+      countPage: [],
+      visib: false
     };
   },
   created() {
@@ -70,6 +71,7 @@ export default {
   methods: {
     fetchPosts(page = null) {
       //alert(page);
+      this.visib = false;
       if (page != null) this.pageNumber = page;
       this.$http
         .get(`${server.baseURL}/posts/list/${this.pageNumber}`, "", {
@@ -81,7 +83,8 @@ export default {
           data => (
             (this.posts = data.data.posts),
             (this.countPage = data.data.countList),
-            (this.pageNumber = data.data.nowList)
+            (this.pageNumber = data.data.nowList),
+            (this.visib = true)
           )
         );
     },
