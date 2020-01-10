@@ -7,12 +7,12 @@
         </small>
       </h4>
       <hr />
-      <h2>{{ post.title }}</h2>
-      <h5>
+      <h2 id="titlePost">{{ post.title }}</h2>
+      <h5 id="authorAdatePost">
         <span class="glyphicon glyphicon-time"></span>
         Post by {{post.author}}, {{post.createdAt}}.
       </h5>
-      <p>{{ post.text }}</p>
+      <p id="textPost">{{ post.text }}</p>
     </div>
     <div class="card mx-auto" style="width: 40rem;">
       <div class="card-header text-center">

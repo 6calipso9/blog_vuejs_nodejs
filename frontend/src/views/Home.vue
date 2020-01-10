@@ -10,8 +10,8 @@
       </div>
     </div>
 
-    <div class="sp_row" style>
-      <div class="col-md-4" v-for="post in posts" :key="post._id">
+    <div class="sp_row" style id="postsHome">
+      <div class="col-md-4" id="postik" v-for="post in posts" :key="post._id">
         <div class="card mb-4 shadow-sm sp_card">
           <div class="card-header" style="width: 100%;">
             <h2 class="card-img-top">{{ post.title }}</h2>
@@ -32,6 +32,7 @@
                     <router-link
                       :to="{name: 'Posts', params: {id: post._id}}"
                       class="btn btn-sm btn-primary"
+                      id="link"
                     >View Post</router-link>
                   </div>
                 </div>
@@ -42,7 +43,7 @@
       </div>
     </div>
     <nav aria-label="...">
-      <ul class="pagination pagination-lg justify-content-center">
+      <ul class="pagination pagination-lg justify-content-center" id="PageLinks">
         <div class="page-item" v-for="cp in countPage" :key="cp.id">
           <a class="page-link" v-on:click="fetchPosts(cp.id)">{{cp.id + 1}}</a>
         </div>

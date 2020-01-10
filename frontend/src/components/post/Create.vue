@@ -7,9 +7,10 @@
             <h2>Create post</h2>
           </div>
           <div class="card-body">
-            <div v-show="sucessAdd" class="alert alert-success">
+            <div v-show="sucessAdd" class="alert alert-success" id="statusPostSucessAdd">
               <div class="btn-group">
                 <router-link
+                  id="linkToPost"
                   :to="{name: 'Posts', params: {id: id}}"
                   class="btn btn-sm btn-primary"
                 >View Post</router-link>
@@ -91,6 +92,7 @@
             <div class="form-group col-md-12">
               <label for="body">Select language</label>
               <vue-bootstrap-typeahead
+                id="selectLang"
                 v-model="query"
                 @hit="selectedAddress = $event"
                 :data="['Russian', 'Ucraine', 'English']"
@@ -99,7 +101,7 @@
           </div>
           <div class="card-footer">
             <div class="form-group col-md-12 pull-right">
-              <button class="btn btn-success col-md-12" type="submit">Create Post</button>
+              <button id="createBtn" class="btn btn-success col-md-12" type="submit">Create Post</button>
             </div>
           </div>
         </div>

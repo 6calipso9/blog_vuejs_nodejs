@@ -6,9 +6,13 @@
       </div>
 
       <div class="card-body">
-        <div v-show="sucessSave" class="alert alert-success">Profile update</div>
+        <div v-show="sucessSave" class="alert alert-success" id="StatusGoodUpdate">Profile update</div>
 
-        <div v-show="plsLogin" class="alert alert-danger">Login please, after check state</div>
+        <div
+          v-show="plsLogin"
+          class="alert alert-danger"
+          id="statusNotAuth"
+        >Login please, after check state</div>
         <form id="create-post-form" @submit.prevent="SaveUser">
           <div class="form-group col-md-12">
             <label for="email">Email</label>
@@ -44,7 +48,12 @@
       </div>
       <div class="card-footer">
         <div class="form-group col-md-12 pull-right">
-          <button class="btn btn-success col-md-12" v-on:click="SaveUser" type="submit">Save</button>
+          <button
+            id="SaveBTN"
+            class="btn btn-success col-md-12"
+            v-on:click="SaveUser"
+            type="submit"
+          >Save</button>
         </div>
       </div>
     </div>
