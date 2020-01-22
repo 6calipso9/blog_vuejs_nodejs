@@ -1,6 +1,5 @@
-# bstu_blog_vue_node
-# Пожалуйста, это заслуживает оценки :D
-## Нужен ноджс, монга и вуежс
-## Проект поделен на фронт от вуе и остальное бэк
+# Web Project for BSTU
+## VueJS(Front-end)
+## NodeJS + Express + Mongo (Back-end)
 
 
